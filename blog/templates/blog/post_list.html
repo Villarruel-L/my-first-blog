@@ -1,23 +1,18 @@
-<!DOCTYPE html>
-<html>
-    <head>
-		<title>
-			Título de la página
-		</title>
-	</head>
-	<body>
-		<p>Esto es una línea de texto<p>
-        <div>
-            <h1><a href="/">TITULO</h1>
-        </div>
+{% extends "blog/base.html" %}
+{% block content %}
+	{% for post in posts %} 
 
-		{% for post in posts%}
-		<div>
-			<p>published: {{ post.published_date }}</p>
-			<h1><a href=""> {{ post.title }}</a></h1>
-			<p>{{ post.text|linebreaksbr }}</p>
-		</div>
-		{% endfor %}
-	
-    </body>
-</html>
+		<div class="post"> 
+
+			<div class="date"> 
+				<p>publicado: {{ post.published_date }}</p> 
+			</div> 
+
+			<h2><h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1></h2> 
+
+			<p>{{ post.text|linebreaksbr }}</p> 
+
+		</div> 
+
+	{% endfor %} 
+{% endblock %}
