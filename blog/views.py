@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Post, Comment
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm, CommentForm
+from .forms import PostForm, CommentForm, RegisterForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
  
@@ -18,7 +18,17 @@ def add_comment_to_post(request, pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = CommentForm()
-        return render(request, 'blog/add_comment_to_post.html', {'form': form})
+    return render(request, 'blog/add_comment_to_post.html', {'form': form})
+
+def register(request):
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("login")
+    else:
+        form = RegisterForm()
+    return render(request, "registration/register.html", {"form": form})
 
 @login_required
 def comment_approve(request, pk):

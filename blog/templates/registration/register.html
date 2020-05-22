@@ -1,0 +1,10 @@
+{% extends "blog/base.html" %}
+{% block title %}Crea tu cuenta{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="registrar" />
+    </form>
+{% endblock %}
