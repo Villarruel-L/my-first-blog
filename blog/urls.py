@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("", views.post_list, name="post_list"),
@@ -13,4 +15,8 @@ urlpatterns = [
     path("comment/<int:pk>/approve", views.comment_approve, name="comment_approve"),
     path("comment/<int:pk>/remove", views.comment_remove, name="comment_remove"),
     path("accounts/register", views.register, name="register"), 
+    path("/inicio", views.inicio, name="inicio")
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT) 

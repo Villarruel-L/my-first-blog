@@ -1,0 +1,92 @@
+
+<html>
+	{% load static %}
+    <head>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+		<link rel="stylesheet" href="{% static 'css/blog.css' %}"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" type="text/css"/>
+		
+		<title>
+			Proyecto Final
+		</title>
+
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+	</head>
+	{% load static %}
+
+	<body> 
+		<header>
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					{% if user.is_authenticated %}
+					<a class="navbar-brand" href="{% url "inicio" %}"><img src= "https://i.ibb.co/YQzS5Cp/Logo.png" class="logoo"></a>
+					{% else %}
+					<a class="navbar-brand" href="/"><img src= "https://i.ibb.co/YQzS5Cp/Logo.png" class="logoo"></a>
+					{% endif %}
+				</div>
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav navbar-right">
+					{% if user.is_authenticated %}
+    	    			<li><a href="Servicios.php">Servicios</a></li>
+        				<li><a href="{% url 'post_new' %}" class="top-menu">Postear Servicio</a></li>
+        				<li><a href="{% url 'post_draft_list' %}" class="top-menu">Mis Servicios</a></li>
+        				<li><p class="top-menu">{{ user.username }}<small>(<a href="{% url 'logout' %}">Cerrar Sesion</a>)</small></p></li>
+					{% else %}
+						<li><a href="{% url 'login' %}" class="top-menu">Iniciar Sesion</a></li>
+					{% endif %}
+					</ul>
+				</div>
+					
+			</nav>
+        </header>
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+
+              
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+				
+                <div class="item active">	
+					<div align="center"><img src="https://i.ibb.co/WpwqDmF/01.png" width="500" height="500" alt="C8nexiones" ></div>
+					<div class="carousel-caption"></div>
+				</div>
+
+            	<div class="item">
+					<div align="center"><img src="https://i.ibb.co/pyHbR4k/2.png" width="500" height="500" alt="C8nexiones"></div>
+					<div class="carousel-caption"> </div>
+				</div>
+				 
+				<div class="item">
+					<div align="center"><img src="https://i.ibb.co/19KmQhy/A-UN-CLICK.png" width="500" height="500" alt="C8nexiones"></div>
+					<div class="carousel-caption"></div>
+				</div>
+
+            	<!-- Left and right controls -->
+            	<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                	<span class="glyphicon glyphicon-chevron-left"></span>
+                	<span class="sr-only">Anterior</span>
+            	</a>
+            	<a class="right carousel-control" href="#myCarousel" data-slide="next">
+                	<span class="glyphicon glyphicon-chevron-right"></span>
+                	<span class="sr-only">Siguiente</span>
+            	</a>
+        	</div>
+		</div>	
+
+		{% block content %} 
+		{% endblock %}
+
+    </body> 
+
+</html>

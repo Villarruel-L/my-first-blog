@@ -4,26 +4,22 @@
     {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
+    <div class="login-box">
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <h1>Inicio de sesión</h1>
+            <label for="username">Nombre de usuario</label>
+            <input type="text" name="username" placeholder="Ingrese su nombre de usuario"/>
 
- 
-    <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        <table>
-           <tr>
-          <td>{{ form.username.label_tag }}</td>
-
-            <td>{{ form.username }}</td>
-            </tr>
-            <tr>
-            <td>{{ form.password.label_tag }}</td>
-            <td>{{ form.password }}</td>
-            </tr>
-        </table>
-        
-        <p>¿No tienes una cuenta? Crea una <a href="/register">aquí</a></p>
-        <input type="submit" value="login" />
-        <!--input type="button" value="registrar" onclick="window.location.href='{% url 'register' %}'"/-->
-        <input type="hidden" name="next" value="{{ next }}" />
-    </form>
-    
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" placeholder="Ingrese su contraseña"/>
+            <input type="submit" value="Iniciar sesión">
+   
+            <a href="#" style="color:#fff;">Olvide mi contraseña</a><br>
+            <p><a href="{% url 'register' %}" style="color:#fff;">No tengo cuenta</a></p>
+            <input type="submit" value="login" />
+            <!--input type="button" value="registrar" onclick="window.location.href='{% url 'register' %}'"/-->
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
 {% endblock %}
