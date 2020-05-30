@@ -15,7 +15,7 @@ urlpatterns = [
     path("comment/<int:pk>/approve", views.comment_approve, name="comment_approve"),
     path("comment/<int:pk>/remove", views.comment_remove, name="comment_remove"),
     path("accounts/register", views.register, name="register"), 
-    path("/inicio", views.inicio, name="inicio")
+    path("inicio", views.inicio, name="inicio")
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
