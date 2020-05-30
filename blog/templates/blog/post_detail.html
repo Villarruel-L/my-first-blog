@@ -22,7 +22,7 @@
         <p>{{ post.text|linebreaksbr }}</p> 
     </div>
 
-    <hr />
+
     <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comment</a>
 
     {% for comment in post.comments.all %} 

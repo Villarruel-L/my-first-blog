@@ -1,12 +1,96 @@
-{% extends "blog/inicio.html" %}
-{% block title %}Crea tu cuenta{% endblock %}
+
+<html>
+	{% load static %}
+    <head>
+		<style>
+        nav div {
+  background-color:black!important;
+}
+nav a{
+      text-decoration:none;
+      color:inherit;
+      font-size:28px;
+      font-family:Arial;
+}
+            
+nav li{
+      display: inline-block;
+      width: relative;
+      height: 60px;
+      padding:5px 10px;
+      background-color:#000;
+      border:1px solid #000;
+      text-align:center;
+      color:#fff;
+      position:relative;
+}
+            
+nav li:hover{
+      background-color:#fff;
+      color:#000!important;
+      }
+            
+nav li>ul{
+      display:none;
+      }
+
+nav li:hover>ul{
+      display:block;
+      position:absolute;
+      top:0px;
+      left:0px;
+}
+.formulario{
+    width: 50%;%
+    background-color: rgba(0,0,0,0.5);  
+}
+        </style>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+		
+	</head>
+
+	<body  style="background-image:url('https://i.ibb.co/SNhT2wP/bg.jpg');"> 
+		<header style= "background-color: black;">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					{% if user.is_authenticated %}
+					<a class="navbar-brand" href="{% url "inicio" %}"><img src= "https://i.ibb.co/YQzS5Cp/Logo.png" width= "45px" height= "45px"></a>
+					{% else %}
+					<a class="navbar-brand" href="/"><img src= "https://i.ibb.co/YQzS5Cp/Logo.png"  width= "45px" height= "45px"></a>
+					{% endif %}
+				</div>
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav navbar-right">
+					{% if user.is_authenticated %}
+    	    			<li><a href="/">Servicios</a></li>
+        				<li><a href="{% url 'post_new' %}" class="top-menu">Postear Servicio</a></li>
+        				<li><a href="{% url 'post_draft_list' %}" class="top-menu">Mis Servicios</a></li>
+        				<li><p class="top-menu">{{ user.username }}<small>(<a href="{% url 'logout' %}">Cerrar Sesion</a>)</small></p></li>
+					{% else %}
+						<li><a href="{% url 'login' %}" class="top-menu">Iniciar Sesion</a></li>
+					{% endif %}
+					</ul>
+				</div>
+					
+			</nav>
+        </header>
+<center>
 {% load crispy_forms_tags %}
-{% block content %}
 <div class="formulario">
-    <form method="POST" class="form-group">
+    <br>
+    <h1 style="color:white; background:black;"><b>REGISTRO DE USUARIO</b></h1>
+    <br>
+    <br>
+
+    <form method="POST" class="form-group" style= "color:white;">
+    <br>
+    <br> 
         {% csrf_token %}
         {{ form|crispy }}
-        <input type="submit" value="registrar" />
+        <input type="submit" value="Registrar" style= "width: 150px; height:40px; color:black"/>
     </form>
 </div>
-{% endblock %}
+</center>
+    </body> 
+</html>

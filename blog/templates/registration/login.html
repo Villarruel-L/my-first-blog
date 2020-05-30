@@ -4,7 +4,7 @@
     {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
-    <div class="login-box">
+    <div class="login-box" >
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
             <h1>Inicio de sesión</h1>
@@ -12,8 +12,8 @@
             <input type="text" name="username" placeholder="Ingrese su nombre de usuario"/>
 
             <label for="password">Contraseña</label>
-            <input type="password" name="password" placeholder="Ingrese su contraseña"/>
-            <input type="submit" value="Iniciar sesión">
+            <input type="password" name="password" placeholder="Ingrese su contraseña" style=" border: none; border-bottom: 1px solid #fff; background: transparent; outline: none; height: 40px; color: #fff; font-size: 16px;"/>
+            <input type="submit" value="Iniciar sesión" style=" width: 100%; margin-bottom: 20px;">
    
             <a href="#" style="color:#fff;">Olvide mi contraseña</a><br>
             <p><a href="{% url 'register' %}" style="color:#fff;">No tengo cuenta</a></p>

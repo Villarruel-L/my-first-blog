@@ -2,9 +2,9 @@
 <html>
 	{% load static %}
     <head>
+		<link rel="stylesheet" href="{% static 'css/blog.css' %}"/>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
-		<link rel="stylesheet" href="{% static 'css/blog.css' %}"/>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" type="text/css"/>
 		
 		<title>
@@ -20,7 +20,7 @@
 	{% load static %}
 
 	<body  style="background-image:url('https://i.ibb.co/SNhT2wP/bg.jpg');"> 
-		<header>
+		<header style= "background-color: black;">
 			<nav class="navbar navbar-default" role="navigation">
 				<div class="navbar-header">
 					{% if user.is_authenticated %}
@@ -33,7 +33,7 @@
 					<ul class="nav navbar-nav navbar-right">
 					{% if user.is_authenticated %}
     	    			<li><a href="/">Servicios</a></li>
-        				<li><a href="{% url 'post_new' %}" class="top-menu">Postear Servicio</a></li>
+        				<li><a href="{% url 'post_new' %}" class="top-menu">Crear Servicio</a></li>
         				<li><a href="{% url 'post_draft_list' %}" class="top-menu">Mis Servicios</a></li>
         				<li><p class="top-menu">{{ user.username }}<small>(<a href="{% url 'logout' %}">Cerrar Sesion</a>)</small></p></li>
 					{% else %}
