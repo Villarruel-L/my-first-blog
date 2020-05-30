@@ -1,16 +1,13 @@
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
-from django.core.files.storage import FileSystemStorage
 
-fs = FileSystemStorage(location='/media/photos')
 
 # Create your models here.
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
-    img = models.ImageField(storage=fs)
 
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
