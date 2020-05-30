@@ -20,9 +20,9 @@
 	{% load static %}
 	
 	<body style="background-image:url('https://i.ibb.co/SNhT2wP/bg.jpg');"> 
-		<header style= "background-color: black;">
-			<nav class="navbar navbar-default" role="navigation">
-				<div class="navbar-header">
+		<header  style= "background-color: black;!important">
+			<nav class="navbar navbar-default" role="navigation"  style= "background-color: black;!important">
+				<div class="navbar-header"  style= "background-color: black;!important">
 					{% if user.is_authenticated %}
 					<a class="navbar-brand" href="{% url "inicio" %}"><img src= "https://i.ibb.co/YQzS5Cp/Logo.png"  width= "45px" height= "45px"></a>
 					{% else %}
