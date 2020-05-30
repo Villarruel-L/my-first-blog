@@ -32,7 +32,7 @@
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<ul class="nav navbar-nav navbar-right">
 					{% if user.is_authenticated %}
-    	    			<li><a href="Servicios.php">Servicios</a></li>
+    	    			<li><a href="/">Servicios</a></li>
         				<li><a href="{% url 'post_new' %}" class="top-menu">Postear Servicio</a></li>
         				<li><a href="{% url 'post_draft_list' %}" class="top-menu">Mis Servicios</a></li>
         				<li><p class="top-menu">{{ user.username }}<small>(<a href="{% url 'logout' %}">Cerrar Sesion</a>)</small></p></li>
